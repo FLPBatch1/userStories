@@ -1,0 +1,74 @@
+Feature: change password
+Scenario: User is trying to change the password
+	Given user is on the change password page
+
+	When user want to change the password
+	Then the user should go change passsword page
+	Then user should enter his old password
+	And user should also enter new password
+
+	When user enters the password with length less than 8
+	Then user needs to see a message saying 'Enter password with length minimum 8
+
+	When user enters the password which does not contain one special character or one uppercase letter or one lowercase letter and a number
+	Then user needs to see a message saying 'Your password must contain a specail charcter and an upper case letter and a lower case letter and a number
+	When user enters new password which is similar to past two old passwords
+	Then user should get a message saying 'the password is already used. Please use a new password'
+
+	When user enters valid password
+	And clicks on change password button
+	Then the password should be changed to new password
+	And the user needs to see a message saying 'Password updated successfully'
+
+
+Feature: Forget password
+Scenario: User is on forget password page
+	when user click on forget password button
+	Then the user should go forget passsword page                 
+                
+        When user is on the forget password page
+        Then user should get password security question
+              
+	When user submits the correct answer for the question
+	Then user can see the old password
+
+	When user submits the wrong answer for the question
+	Then user needs to see a message saying 'You are not authentic user'
+
+
+Feature:Feedbacks of products
+Scenario: Feedback by user 
+	Given the user product page  
+
+	When the user want to give feedback to a product
+	Then the user needs to go to the feedback page 
+
+       	Given the feedback page
+	When the user is on feedback page
+	Then the user needs to enter the feedback
+
+	Given the feedback page
+	When user enters submit on entering some text in feedback
+	Then the user needs to see a message saying "Feedback submitted successfully"
+	And the feedback needs to be displayed in product page.
+
+	Given the feedback page
+	When user enters submit without entering any text
+	Then the user needs to see a message saying "Enter your feedback". 
+
+
+Feature:Image Upload
+Scenario: Admin and Merchant upload images and banners
+	Given the application
+	When the admin wants to upload product images 
+	Then the admin should go to the paticular category products page
+	
+	When the admin is on the products page
+	Then the admin can upload product images
+
+	Given the application
+	When the merchant wants to upload product images 
+	Then the merchant should go to the paticular category products page
+
+	When the merchant is on the products page
+	Then the merchant can upload product images
